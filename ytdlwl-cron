@@ -1,3 +1,4 @@
 # must be ended with a new line "LF" (Unix) and not "CRLF" (Windows)
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 * * * * * cd /app && /usr/bin/flock -w 0 update_wl.lock sh update_wl.sh > /var/log/cron.log 2>&1
 # An empty line is required at the end of this file for a valid cron file.
