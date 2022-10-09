@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "****************************************"
+echo "*** Starting $(date)"
+echo "****************************************"
+
 OUTPUT_PATH=./downloads
 
 echo downloading playlist...
