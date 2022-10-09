@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM python:3.9
 WORKDIR /app
-USER kodiuser
 
 RUN apt-get update && apt-get upgrade && apt-get install -y ffmpeg
 RUN apt-get -y install cron
