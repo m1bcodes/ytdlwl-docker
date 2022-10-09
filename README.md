@@ -29,7 +29,7 @@ Place the cookies as described in the ytdlwl repository in the cookies folder.
 
 ### running the docker image for real
 ```
-docker run --name ytdlwl --mount "source=ytdlwl-downloads,target=/app/downloads" --mount "source=ytdlwl-cookies,target=/app/cookies" ytdlwl
+docker run -d --name ytdlwl --mount "source=ytdlwl-downloads,target=/app/downloads" --mount "source=ytdlwl-cookies,target=/app/cookies" ytdlwl
 ```
 To auto-start the container, e.g. after a reboot of the server, call
 ```
