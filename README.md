@@ -32,3 +32,8 @@ To auto-start the container, e.g. after a reboot of the server, call
 ```
 docker update --restart unless-stopped ytdlwl
 ```
+### rebuild for docker-compose
+To rebuild the stack after editing and to avoid re-use of cached components:
+```
+docker-compose up --force-recreate --build -d
+```
