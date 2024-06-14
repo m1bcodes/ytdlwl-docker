@@ -1,0 +1,15 @@
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+services:
+  ytdlwl:
+    build: .
+    volumes:
+      - /mnt/Videos:/var/Videos
+    secrets:
+      - yt-cookies
+secrets:
+  yt-cookies:
+    file: /mnt/Videos/cookies/cookies.txt
