@@ -16,6 +16,11 @@ mkdir -p ${VIDEO_PATH_HD}
 mkdir -p ${VIDEO_PATH_HD}
 
 echo purging...
+rm ${VIDEO_PATH}/*.part
+rm ${VIDEO_PATH}/*.jpg
+rm ${VIDEO_PATH_HD}/*.part
+rm ${VIDEO_PATH_HD}/*.jpg
+
 python3 remove_videos_not_in_playlist.py ${VIDEO_PATH} ${PLAYLIST_FILE}
 python3 remove_videos_not_in_playlist.py ${VIDEO_PATH_HD} ${PLAYLIST_FILE}
 
