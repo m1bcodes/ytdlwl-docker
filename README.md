@@ -37,3 +37,37 @@ To rebuild the stack after editing and to avoid re-use of cached components:
 ```
 docker-compose up --force-recreate --build -d
 ```
+
+# setup synchronization to remote systems
+This section describes the steps required to synchronize the downloaded 
+videos with remote (raspberry pi) systems. They can run libreelec for 
+instance.
+
+## create key file
+Execute these steps on the machine, where docker-compose is run`.
+The remote machine is called rpi4 in this case.
+```
+ssh-keygen -o -a 100 -t ed25519
+```
+Allow the key file to be created in ~/.ssh.
+
+## copy key to remote machine
+The public key is copied to the remote machine.
+```
+ssh-copy-id -i ~/.ssh/id_ed25519.pub root@rpi4
+```
+
+## install network tools on libreelec
+Install the network tools addon (on libreelec) from the libreelec addon 
+repository. The network tools can be found under 'program addons'.
+This is necessary to have rsync available under libreelec.
+
+## rsync command
+The rsync command to be executed from the ytdlwl container is added to 
+update_wl.sh:
+```
+rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv" /var/Videos/Youtube_WL root@rpi4:"/storage/videos"
+```
+ - The ssh key (we need the private one) is per docker-compose copied to 
+ /run/secrets/ssh-key-prv`
+ - --delete to remove extra files on the destination folder.

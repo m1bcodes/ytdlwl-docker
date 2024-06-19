@@ -4,9 +4,8 @@ WORKDIR /app
 
 RUN echo "hello there"
 
-RUN apt-get update && apt-get install -y ffmpeg
-RUN apt-get -y install cron
-
+RUN apt-get update 
+RUN apt-get install -y ffmpeg cron rsync
 
 # RUN git clone https://github.com/m1bcodes/ytdlwl-docker.git
 

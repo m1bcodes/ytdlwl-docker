@@ -10,6 +10,12 @@ services:
       - /mnt/Videos:/var/Videos
     secrets:
       - yt-cookies
+      - ssh-key-prv
+
 secrets:
   yt-cookies:
     file: /mnt/Videos/cookies/cookies.txt
+  ssh-key-prv:
+    file: ../.ssh/id_ed25519
+
+
