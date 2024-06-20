@@ -56,6 +56,13 @@ The public key is copied to the remote machine.
 ```
 ssh-copy-id -i ~/.ssh/id_ed25519.pub root@rpi4
 ```
+## add all remote machines to a known_hosts file
+In order to avoid confirmation by ssh to accept the remote machine, since no fingerprint is known, we create a `known_hosts` file, were the fingerprints of all machines are stored, which shall be syncronization targets.
+Type the folling command for each remote machine:
+```
+ssh-keyscan -H rpi4 >> ./known_hosts
+```
+The `known_hosts` file will be transferred as secret to the container.
 
 ## install network tools on libreelec
 Install the network tools addon (on libreelec) from the libreelec addon 
@@ -66,7 +73,7 @@ This is necessary to have rsync available under libreelec.
 The rsync command to be executed from the ytdlwl container is added to 
 update_wl.sh:
 ```
-rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv" /var/Videos/Youtube_WL root@rpi4:"/storage/videos"
+rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv -o UserKnownHostsFile=/run/secrets/ssh-known-hosts" /var/Videos/Youtube_WL root@rpi4:"/storage/videos"
 ```
  - The ssh key (we need the private one) is per docker-compose copied to 
  /run/secrets/ssh-key-prv`
