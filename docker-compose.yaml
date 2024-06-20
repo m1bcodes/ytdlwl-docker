@@ -11,11 +11,14 @@ services:
     secrets:
       - yt-cookies
       - ssh-key-prv
+      - ssh-known-hosts
 
 secrets:
   yt-cookies:
     file: /mnt/Videos/cookies/cookies.txt
   ssh-key-prv:
     file: ../.ssh/id_ed25519
+  ssh-known-hosts:
+    file: ./known_hosts
 
 

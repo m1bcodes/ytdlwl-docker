@@ -33,8 +33,8 @@ python3 set_file_date.py ${VIDEO_PATH} ${PLAYLIST_FILE}
 python3 set_file_date.py ${VIDEO_PATH_HD} ${PLAYLIST_FILE}
 
 echo syncronizing with remote devices
-rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv" /var/Videos/Youtube_WL root@rpi4:"/storage/videos"
-rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv" /var/Videos/Youtube_WL_HD root@rpi4:"/storage/videos"
+rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv -o UserKnownHostsFile=/run/secrets/ssh-known-hosts" /var/Videos/Youtube_WL root@rpi4:"/storage/videos"
+rsync -avz --delete -e "ssh -i /run/secrets/ssh-key-prv -o UserKnownHostsFile=/run/secrets/ssh-known-hosts" /var/Videos/Youtube_WL_HD root@rpi4:"/storage/videos"
 
 echo "****************************************"
 echo "*** Completed $(date)"
