@@ -12,7 +12,8 @@ services:
       - yt-cookies
       - ssh-key-prv
       - ssh-known-hosts
-
+    restart: any
+  
 secrets:
   yt-cookies:
     file: /mnt/Videos/cookies/cookies.txt
